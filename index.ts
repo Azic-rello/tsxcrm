@@ -1,0 +1,10 @@
+export { default as Login } from "./src/components/auth/Login";
+export { default as Admin } from "./src/pages/Admin";
+export { default as Student } from "./src/pages/Student";
+export { default as Manager } from "./src/pages/Manager";
+export { default as Teacher } from "./src/pages/Teacher";
+export { default as Room } from "./src/pages/Room";
+export { default as ManagerAdd } from "./src/Features/manager/ManagerAdd";
+export { default as ManagerEdit } from "./src/Features/manager/ManagerEdit";
+export { default as ManagerDalete } from "./src/Features/manager/ManagerDalete";
+export { default as Group } from "./src/pages/Group";

@@ -8,3 +8,5 @@ export { default as ManagerAdd } from "./src/Features/manager/ManagerAdd";
 export { default as ManagerEdit } from "./src/Features/manager/ManagerEdit";
 export { default as ManagerDalete } from "./src/Features/manager/ManagerDalete";
 export { default as Group } from "./src/pages/Group";
+export { default as Assigment } from "./src/pages/Assigment";
+export { default as Envrolment } from "./src/pages/Envrolment";

@@ -1,6 +1,16 @@
 import { Route, Routes } from "react-router-dom";
-import { Admin, Group, Login, Manager, Room, Student, Teacher } from "../";
-import { SiteBar } from "./components/shared/SiteBar";
+import {
+  Admin,
+  Group,
+  Login,
+  Manager,
+  Room,
+  Student,
+  Teacher,
+  Assigment,
+  Envrolment
+} from "../";
+import SiteBar from "./components/shared/SiteBar";
 
 function App() {
   return (
@@ -14,6 +24,8 @@ function App() {
         <Route path="/admin/group" element={<Group />} />
         <Route path="/admin/room" element={<Room />} />
         <Route path="/admin/manager" element={<Manager />} />
+        <Route path="/admin/envrolment" element={<Envrolment />} />
+        <Route path="/admin/assigment" element={<Assigment />} />
       </Route>
     </Routes>
   );

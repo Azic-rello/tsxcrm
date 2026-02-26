@@ -12,24 +12,17 @@
       "id": "8d6d"
     },
     {
-      "name": "kichik",
-      "id": "8a3d"
+      "id": "8a3d",
+      "name": "kichik"
     }
   ],
   "Group": [
     {
-      "id": "dd58",
-      "nomi": "asdfasdf",
+      "id": "5af3",
+      "nomi": "asdfasdfasdf",
       "xona": "o'rtacha",
       "vaqt": "10:00-12:00",
       "kun": "Toq kunlar"
-    },
-    {
-      "id": "be45",
-      "nomi": "asdfasdf",
-      "xona": "o'rtacha",
-      "vaqt": "10:00-12:00",
-      "kun": "Juft kunlar"
     }
   ],
   "Assignment": [],

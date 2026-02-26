@@ -10,3 +10,7 @@ export { default as ManagerDalete } from "./src/Features/manager/ManagerDalete";
 export { default as Group } from "./src/pages/Group";
 export { default as Assigment } from "./src/pages/Assigment";
 export { default as Envrolment } from "./src/pages/Envrolment";
+
+export { default as GroupAdd } from "./src/Features/group/GroupAdd";
+export { default as GroupEdit } from "./src/Features/group/GroupEdit";
+export { default as GroupDel } from "./src/Features/group/GroupDelete";

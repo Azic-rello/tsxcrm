@@ -2,9 +2,36 @@
   "Teacher": [],
   "Student": [],
   "Manager": [],
-  "Room": [],
-  "Group": [],
+  "Room": [
+    {
+      "name": "katta",
+      "id": "8fb0"
+    },
+    {
+      "name": "o'rtacha",
+      "id": "8d6d"
+    },
+    {
+      "name": "kichik",
+      "id": "8a3d"
+    }
+  ],
+  "Group": [
+    {
+      "id": "dd58",
+      "nomi": "asdfasdf",
+      "xona": "o'rtacha",
+      "vaqt": "10:00-12:00",
+      "kun": "Toq kunlar"
+    },
+    {
+      "id": "be45",
+      "nomi": "asdfasdf",
+      "xona": "o'rtacha",
+      "vaqt": "10:00-12:00",
+      "kun": "Juft kunlar"
+    }
+  ],
   "Assignment": [],
   "Envrolment": []
 }
-

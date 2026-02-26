@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { Lock, User, LogIn, ShieldCheck } from "lucide-react"; 
 
 const Login = () => {
-  const [login, setLogin] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [login, setLogin] = useState<string>("admin");
+  const [password, setPassword] = useState<string>("admin123");
   const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (login === "admin" && password === "password") {
+    if (login === "admin" && password === "admin123") {
       navigate("/admin");
     } else {
       alert("Login yoki password xato!");

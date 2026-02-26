@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import {
   Dialog,
   DialogTitle,
@@ -6,17 +6,15 @@ import {
   DialogActions,
   TextField,
   Button,
-  Box,
   Typography,
   IconButton,
-  CircularProgress,
+  Stack,
   Avatar,
-  Stack
+  CircularProgress
 } from "@mui/material"
 
 import EditRoundedIcon from "@mui/icons-material/EditRounded"
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded"
-
 import axios from "axios"
 
 interface Teacher {
@@ -37,7 +35,6 @@ interface Props {
 const API = "http://localhost:3011/Teacher"
 
 const TeacherEdit = ({ open, onClose, reload, teacher }: Props) => {
-
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [phone, setPhone] = useState("")
@@ -55,17 +52,9 @@ const TeacherEdit = ({ open, onClose, reload, teacher }: Props) => {
 
   const handleEdit = async () => {
     if (!teacher) return
-
     try {
       setLoading(true)
-
-      await axios.put(`${API}/${teacher.id}`, {
-        firstName,
-        lastName,
-        phone,
-        subject
-      })
-
+      await axios.put(`${API}/${teacher.id}`, { firstName, lastName, phone, subject })
       reload()
       onClose()
     } finally {
@@ -81,90 +70,120 @@ const TeacherEdit = ({ open, onClose, reload, teacher }: Props) => {
       fullWidth
       PaperProps={{
         sx: {
-          borderRadius: 4,
-          p: 1,
-          boxShadow: "0 20px 50px rgba(0,0,0,0.15)"
+          borderRadius: 5,
+          backdropFilter: "blur(12px)",
+          background: "rgba(255,255,255,0.05)",
+          border: "2px solid rgba(79,70,229,0.4)",
+          boxShadow: "0 25px 60px rgba(0,0,0,0.25)"
         }
       }}
     >
+      {/* HEADER */}
       <DialogTitle
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center"
+          alignItems: "center",
+          background: "linear-gradient(135deg,#2563eb,#4f46e5)",
+          color: "white",
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          px: 3,
+          py: 2
         }}
       >
         <Stack direction="row" spacing={2} alignItems="center">
           <Avatar sx={{ bgcolor: "#2563eb" }}>
             <EditRoundedIcon />
           </Avatar>
-
           <Typography variant="h6" fontWeight={700}>
             O‘qituvchini tahrirlash
           </Typography>
         </Stack>
-
-        <IconButton onClick={onClose}>
+        <IconButton onClick={onClose} sx={{ color: "white" }}>
           <CloseRoundedIcon />
         </IconButton>
       </DialogTitle>
 
-      <DialogContent>
-
-        <Box
+      {/* FORM */}
+      <DialogContent sx={{ display: "flex", flexDirection: "column", gap: 2.5, mt: 2 }}>
+        <TextField
+          label="Ism"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          fullWidth
           sx={{
-            mb: 3,
-            p: 2,
-            borderRadius: 3,
-            background: "#f8fafc"
+            "& .MuiOutlinedInput-root": {
+              borderRadius: 2,
+              color: "white",
+              "& fieldset": { borderColor: "rgba(79,70,229,0.3)" },
+              "&:hover fieldset": { borderColor: "#2563eb" }
+            },
+            "& .MuiInputLabel-root": { color: "rgba(255,255,255,0.7)" }
           }}
-        >
-          <Typography fontWeight={600}>
-            {teacher?.firstName} {teacher?.lastName}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Ma’lumotlarni yangilang
-          </Typography>
-        </Box>
-
-        <Stack spacing={2.5}>
-          <TextField
-            label="Ism"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            fullWidth
-          />
-
-          <TextField
-            label="Familiya"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            fullWidth
-          />
-
-          <TextField
-            label="Telefon"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            fullWidth
-          />
-
-          <TextField
-            label="Fan"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-            fullWidth
-          />
-        </Stack>
-
+        />
+        <TextField
+          label="Familiya"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          fullWidth
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: 2,
+              color: "white",
+              "& fieldset": { borderColor: "rgba(79,70,229,0.3)" },
+              "&:hover fieldset": { borderColor: "#2563eb" }
+            },
+            "& .MuiInputLabel-root": { color: "rgba(255,255,255,0.7)" }
+          }}
+        />
+        <TextField
+          label="Telefon"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          fullWidth
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: 2,
+              color: "white",
+              "& fieldset": { borderColor: "rgba(79,70,229,0.3)" },
+              "&:hover fieldset": { borderColor: "#2563eb" }
+            },
+            "& .MuiInputLabel-root": { color: "rgba(255,255,255,0.7)" }
+          }}
+        />
+        <TextField
+          label="Fan"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          fullWidth
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: 2,
+              color: "white",
+              "& fieldset": { borderColor: "rgba(79,70,229,0.3)" },
+              "&:hover fieldset": { borderColor: "#2563eb" }
+            },
+            "& .MuiInputLabel-root": { color: "rgba(255,255,255,0.7)" }
+          }}
+        />
       </DialogContent>
 
-      <DialogActions sx={{ px: 3, pb: 2 }}>
+      {/* ACTIONS */}
+      <DialogActions sx={{ px: 3, pb: 3, pt: 1.5, justifyContent: "flex-end" }}>
         <Button
           onClick={onClose}
           disabled={loading}
           variant="outlined"
-          sx={{ borderRadius: 2 }}
+          sx={{
+            borderRadius: 3,
+            px: 3,
+            py: 1.2,
+            color: "#4f46e5",
+            borderColor: "#4f46e5",
+            textTransform: "none",
+            "&:hover": { backgroundColor: "rgba(79,70,229,0.05)" }
+          }}
         >
           Bekor qilish
         </Button>
@@ -174,14 +193,17 @@ const TeacherEdit = ({ open, onClose, reload, teacher }: Props) => {
           disabled={loading}
           variant="contained"
           sx={{
-            borderRadius: 2,
+            borderRadius: 3,
             px: 4,
-            fontWeight: 600
+            py: 1.2,
+            fontWeight: 700,
+            textTransform: "none",
+            background: "linear-gradient(135deg,#2563eb,#4f46e5)",
+            boxShadow: "0 10px 25px rgba(79,70,229,0.4)",
+            "&:hover": { transform: "translateY(-2px)", boxShadow: "0 15px 35px rgba(79,70,229,0.6)" }
           }}
         >
-          {loading
-            ? <CircularProgress size={22} color="inherit" />
-            : "Saqlash"}
+          {loading ? "Saqlanmoqda..." : "Saqlash"}
         </Button>
       </DialogActions>
     </Dialog>

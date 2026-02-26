@@ -37,18 +37,10 @@ const TeacherAdd = ({ open, onClose, reload }: Props) => {
 
   const handleAdd = async () => {
     if (!firstName || !lastName || !phone || !subject) return
-
     try {
-      await axios.post(API, {
-        firstName,
-        lastName,
-        phone,
-        subject
-      })
-
+      await axios.post(API, { firstName, lastName, phone, subject })
       reload()
       onClose()
-
       setFirstName("")
       setLastName("")
       setPhone("")
@@ -67,9 +59,9 @@ const TeacherAdd = ({ open, onClose, reload }: Props) => {
       PaperProps={{
         sx: {
           borderRadius: 5,
-          backdropFilter: "blur(15px)",
-          background:
-            "linear-gradient(135deg,#ffffff,#f8fafc)",
+          backdropFilter: "blur(12px)",
+          background: "rgba(255,255,255,0.05)",
+          border: "2px solid rgba(79,70,229,0.4)",
           boxShadow: "0 25px 60px rgba(0,0,0,0.25)"
         }
       }}
@@ -77,19 +69,20 @@ const TeacherAdd = ({ open, onClose, reload }: Props) => {
       {/* HEADER */}
       <DialogTitle
         sx={{
-          background:
-            "linear-gradient(135deg,#2563eb,#4f46e5)",
+          background: "linear-gradient(135deg,#2563eb,#4f46e5)",
           color: "white",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           borderTopLeftRadius: 20,
-          borderTopRightRadius: 20
+          borderTopRightRadius: 20,
+          px: 3,
+          py: 2
         }}
       >
         <Box display="flex" alignItems="center" gap={1.5}>
           <PersonAddAlt1Icon />
-          <Typography fontWeight={700}>
+          <Typography fontWeight={700} variant="h6">
             Yangi O‘qituvchi
           </Typography>
         </Box>
@@ -100,14 +93,7 @@ const TeacherAdd = ({ open, onClose, reload }: Props) => {
       </DialogTitle>
 
       {/* FORM */}
-      <DialogContent
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 3,
-          mt: 3
-        }}
-      >
+      <DialogContent sx={{ display: "flex", flexDirection: "column", gap: 2.5, mt: 2 }}>
         <TextField
           label="Ism"
           value={firstName}
@@ -116,9 +102,18 @@ const TeacherAdd = ({ open, onClose, reload }: Props) => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <BadgeIcon color="primary" />
+                <BadgeIcon sx={{ color: "#6366f1" }} />
               </InputAdornment>
             )
+          }}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: 2,
+              color: "white",
+              "& fieldset": { borderColor: "rgba(79,70,229,0.3)" },
+              "&:hover fieldset": { borderColor: "#2563eb" }
+            },
+            "& .MuiInputLabel-root": { color: "rgba(255,255,255,0.7)" }
           }}
         />
 
@@ -130,9 +125,18 @@ const TeacherAdd = ({ open, onClose, reload }: Props) => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SchoolIcon color="primary" />
+                <SchoolIcon sx={{ color: "#6366f1" }} />
               </InputAdornment>
             )
+          }}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: 2,
+              color: "white",
+              "& fieldset": { borderColor: "rgba(79,70,229,0.3)" },
+              "&:hover fieldset": { borderColor: "#2563eb" }
+            },
+            "& .MuiInputLabel-root": { color: "rgba(255,255,255,0.7)" }
           }}
         />
 
@@ -144,9 +148,18 @@ const TeacherAdd = ({ open, onClose, reload }: Props) => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <PhoneIcon color="primary" />
+                <PhoneIcon sx={{ color: "#6366f1" }} />
               </InputAdornment>
             )
+          }}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: 2,
+              color: "white",
+              "& fieldset": { borderColor: "rgba(79,70,229,0.3)" },
+              "&:hover fieldset": { borderColor: "#2563eb" }
+            },
+            "& .MuiInputLabel-root": { color: "rgba(255,255,255,0.7)" }
           }}
         />
 
@@ -158,20 +171,35 @@ const TeacherAdd = ({ open, onClose, reload }: Props) => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <MenuBookIcon color="primary" />
+                <MenuBookIcon sx={{ color: "#6366f1" }} />
               </InputAdornment>
             )
+          }}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: 2,
+              color: "white",
+              "& fieldset": { borderColor: "rgba(79,70,229,0.3)" },
+              "&:hover fieldset": { borderColor: "#2563eb" }
+            },
+            "& .MuiInputLabel-root": { color: "rgba(255,255,255,0.7)" }
           }}
         />
       </DialogContent>
 
-      <DialogActions sx={{ px: 3, pb: 3 }}>
+      {/* ACTIONS */}
+      <DialogActions sx={{ px: 3, pb: 3, pt: 1.5, justifyContent: "flex-end" }}>
         <Button
           onClick={onClose}
           variant="outlined"
           sx={{
             borderRadius: 3,
-            px: 3
+            px: 3,
+            py: 1.2,
+            color: "#4f46e5",
+            borderColor: "#4f46e5",
+            textTransform: "none",
+            "&:hover": { backgroundColor: "rgba(79,70,229,0.05)" }
           }}
         >
           Bekor qilish
@@ -183,16 +211,12 @@ const TeacherAdd = ({ open, onClose, reload }: Props) => {
           sx={{
             borderRadius: 3,
             px: 4,
+            py: 1.2,
             fontWeight: 700,
-            background:
-              "linear-gradient(135deg,#2563eb,#4f46e5)",
-            boxShadow:
-              "0 10px 25px rgba(79,70,229,0.4)",
-            "&:hover": {
-              transform: "translateY(-2px)",
-              boxShadow:
-                "0 15px 35px rgba(79,70,229,0.6)"
-            }
+            textTransform: "none",
+            background: "linear-gradient(135deg,#2563eb,#4f46e5)",
+            boxShadow: "0 10px 25px rgba(79,70,229,0.4)",
+            "&:hover": { transform: "translateY(-2px)", boxShadow: "0 15px 35px rgba(79,70,229,0.6)" }
           }}
         >
           Qo‘shish

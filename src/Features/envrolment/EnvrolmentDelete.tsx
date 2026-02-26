@@ -1,7 +1,17 @@
-const EnvrolmentDelete = () => {
-  return (
-    <div>envrolmentDelete</div>
-  )
+interface EnvrolmentDeleteProps {
+  id: string;
+  onDelete: (id: string) => void;
 }
 
-export default EnvrolmentDelete
+const EnvrolmentDelete = ({ id, onDelete }: EnvrolmentDeleteProps) => {
+  return (
+    <button
+      onClick={() => onDelete(id)}
+      className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white"
+    >
+      Delete
+    </button>
+  );
+};
+
+export default EnvrolmentDelete;

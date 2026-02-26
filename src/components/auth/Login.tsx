@@ -1,6 +1,10 @@
+import TeacherPage from "@/pages/Teacher"
+
 const Login = () => {
   return (
-    <div>Login</div>
+    <div>Login
+      <TeacherPage/>
+    </div>
   )
 }
 

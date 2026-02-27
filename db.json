@@ -1,7 +1,11 @@
 {
   "Teacher": [],
   "Student": [],
-  "Manager": [],
+  "Manager": [
+    {
+      
+    }
+  ],
   "Room": [],
   "Group": [],
   "Assignment": [],

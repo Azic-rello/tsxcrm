@@ -1,12 +1,12 @@
 const AssignmentDelete = ({ id }) => {
   const handleDelete = async () => {
     const confirmDelete = window.confirm(
-      "Rostdan ham bu biriktirishni o`chirmoqchimisiz?"
+      "Rostdan ham bu biriktirishni o`chirmoqchimisiz?",
     );
 
     if (!confirmDelete) return;
 
-    await fetch(`http://localhost:3000/assignments/${id}`, {
+    await fetch(`http://localhost:5000/assignments/${id}`, {
       method: "DELETE",
     });
     window.location.reload();

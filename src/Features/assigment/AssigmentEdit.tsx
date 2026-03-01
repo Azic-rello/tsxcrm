@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AssignmentEdit = ({ assignment, teachers, groups }) => {
+const AssignmentEdit = ({ assignment, Teacher, groups }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [teacherId, setTeacherId] = useState(assignment.teacherId);
   const [groupId, setGroupId] = useState(assignment.groupId);
@@ -9,7 +9,7 @@ const AssignmentEdit = ({ assignment, teachers, groups }) => {
   const handleUpdate = async () => {
     setLoading(true);
 
-    await fetch(`http://localhost:3000/assignments/${assignment.id}`, {
+    await fetch(`http://localhost:5000/assignments/${assignment.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const AssignmentEdit = ({ assignment, teachers, groups }) => {
         onChange={(e) => setTeacherId(e.target.value)}
         className="border p-1 rounded"
       >
-        {teachers.map((item) => (
+        {Teacher.map((item) => (
           <option key={item.id} value={item.id}>
             {item.name}
           </option>

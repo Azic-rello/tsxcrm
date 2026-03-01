@@ -16,7 +16,7 @@ const GroupEdit = ({ group, rooms, onUpdate, onCancel }) => {
       return;
     }
     try {
-      await axios.put(`http://localhost:5000/Group/${group.id}`, {
+      await axios.put(`http://localhost:5000/groups/${group.id}`, {
         nomi,
         xona,
         vaqt,

@@ -5,29 +5,39 @@ import AssignmentDelete from "../Features/assigment/AssigmentDelete";
 
 const Assignment = () => {
   const [assignments, setAssignments] = useState([]);
-  const [teachers, setTeachers] = useState([]);
+  const [Teacher, setTeacher] = useState([]);
   const [groups, setGroups] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:3000/assignments")
-      .then(res => res.json())
-      .then(data => setAssignments(data));
+  const fetchData = () => {
+    fetch("http://localhost:5000/assignments")
+      .then((res) => res.json())
+      .then((data) => setAssignments(data));
 
-    fetch("http://localhost:3000/teachers")
-      .then(res => res.json())
-      .then(data => setTeachers(data));
+    fetch("http://localhost:5000/Teacher")
+      .then((res) => res.json())
+      .then((data) => setTeacher(data));
 
-    fetch("http://localhost:3000/groups")
-      .then(res => res.json())
-      .then(data => setGroups(data));
-  }, []);
-
-  const getTeacherName = (id) => {
-    return teachers.find(t => t.id === id)?.name || "Noma`lum";
+    fetch("http://localhost:5000/groups")
+      .then((res) => res.json())
+      .then((data) => setGroups(data));
   };
 
-  const getGroupName = (id) => {
-    return groups.find(g => g.id === id)?.name || "Noma`lum";
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const getTeacherName = (teacherId) => {
+    if (!teacherId) return "Not assigned";
+    const teacher = Teacher.find(
+      (t) => t.id.toString() === teacherId.toString(),
+    );
+    return teacher ? teacher.firstName : "Not found";
+  };
+
+  const getGroupName = (groupId) => {
+    if (!groupId) return "Not assigned";
+    const group = groups.find((g) => g.id.toString() === groupId.toString());
+    return group ? group.nomi : "Not found";
   };
 
   return (
@@ -40,11 +50,13 @@ const Assignment = () => {
           O`qituvchilarni guruhlarga biriktiring va nazorat qiling
         </p>
       </div>
+
       <AssignmentAdd
-        teachers={teachers}
+        Teacher={Teacher}
         groups={groups}
-        onAdd={() => window.location.reload()}
+        onAdd={fetchData}
       />
+
       <table className="w-full mt-10 border border-gray-700">
         <thead className="bg-black/50">
           <tr>
@@ -56,19 +68,16 @@ const Assignment = () => {
         <tbody>
           {assignments.map((a) => (
             <tr key={a.id} className="text-center">
-              <td className="p-3 border">
-                {getTeacherName(a.teacherId)}
-              </td>
-              <td className="p-3 border">
-                {getGroupName(a.groupId)}
-              </td>
+              <td className="p-3 border">{getTeacherName(a.teacherId)}</td>
+              <td className="p-3 border">{getGroupName(a.groupId)}</td>
               <td className="p-3 border flex gap-3 justify-center">
                 <AssignmentEdit
                   assignment={a}
-                  teachers={teachers}
+                  Teacher={Teacher}
                   groups={groups}
+                  onUpdate={fetchData}
                 />
-                <AssignmentDelete id={a.id} />
+                <AssignmentDelete id={a.id} onDelete={fetchData} />
               </td>
             </tr>
           ))}

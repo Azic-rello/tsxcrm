@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AssignmentAdd = ({ teachers, groups, onAdd }) => {
+const AssignmentAdd = ({ Teacher, groups, onAdd }) => {
   const [teacherId, setTeacherId] = useState("");
   const [groupId, setGroupId] = useState("");
   const [loading, setLoading] = useState(false);
@@ -15,7 +15,7 @@ const AssignmentAdd = ({ teachers, groups, onAdd }) => {
 
     setLoading(true);
 
-    await fetch("http://localhost:3000/assignments", {
+    await fetch("http://localhost:5000/assignments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,9 +46,9 @@ const AssignmentAdd = ({ teachers, groups, onAdd }) => {
             onChange={(e) => setTeacherId(e.target.value)}
           >
             <option value="">O`qituvchini tanlang</option>
-            {teachers.map((t) => (
+            {Teacher.map((t) => (
               <option key={t.id} value={t.id}>
-                {t.name}
+                {t.firstName}
               </option>
             ))}
           </select>
@@ -63,7 +63,7 @@ const AssignmentAdd = ({ teachers, groups, onAdd }) => {
             <option value="">Guruhni tanlang</option>
             {groups.map((g) => (
               <option key={g.id} value={g.id}>
-                {g.name}
+                {g.nomi}
               </option>
             ))}
           </select>

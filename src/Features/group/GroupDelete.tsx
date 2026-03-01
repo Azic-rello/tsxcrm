@@ -27,7 +27,6 @@ const GroupDel = ({ groups, onEdit, onDelete }) => {
             </tr>
           ))}
         </tbody>
-        {/* asdfasdf */}
       </table>
     </div>
   );

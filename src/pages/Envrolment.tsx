@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   getStudents,
   getGroups,
@@ -19,7 +19,7 @@ interface Student {
 
 interface Group {
   id: string;
-  name: string;
+  nomi: string;
 }
 
 interface Enrolment {
@@ -54,7 +54,22 @@ const Envrolment = () => {
     fetchData();
   }, []);
 
-  const handleAdd = async (data: any) => {
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
+
+  // Maplar performance uchun
+  const studentMap = useMemo(
+    () => Object.fromEntries(students.map((s) => [s.id, s])),
+    [students],
+  );
+
+  const groupMap = useMemo(
+    () => Object.fromEntries(groups.map((g) => [g.id, g])),
+    [groups],
+  );
+
+  const handleAdd = async (data: { studentId: string; groupId: string }) => {
     await addEnvrolment(data);
     fetchData();
   };
@@ -64,19 +79,21 @@ const Envrolment = () => {
     fetchData();
   };
 
-  const handleUpdate = async (id: string, data: any) => {
+  const handleUpdate = async (
+    id: string,
+    data: { studentId: string; groupId: string },
+  ) => {
     await updateEnvrolment(id, data);
     setEditingId(null);
     fetchData();
   };
 
   const filtered = enrolments.filter((e) => {
-    const student = students.find((s) => s.id === e.studentId);
-    const group = groups.find((g) => g.id === e.groupId);
-
+    const student = studentMap[e.studentId];
+    const group = groupMap[e.groupId];
     return (
       student?.name.toLowerCase().includes(search.toLowerCase()) ||
-      group?.name.toLowerCase().includes(search.toLowerCase())
+      group?.nomi.toLowerCase().includes(search.toLowerCase())
     );
   });
 
@@ -88,11 +105,8 @@ const Envrolment = () => {
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-gray-200 flex">
-
       <div className="flex-1 p-10">
-        <h1 className="text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-          Enrolment Management
-        </h1>
+        <h1 className="text-4xl font-bold mb-8">Enrolment Management</h1>
 
         <input
           type="text"
@@ -109,20 +123,21 @@ const Envrolment = () => {
             onAdd={handleAdd}
           />
         </div>
+
         <div className="bg-[#1e293b] p-6 rounded-2xl shadow-xl border border-gray-700">
-          <table className="w-full">
+          <table className="w-full text-left">
             <thead>
-              <tr className="border-b border-gray-600 text-gray-400 uppercase text-sm flex">
-                <th className="ml-64">Student</th>
-                <th className="ml-78">Group</th>
-                <th className="ml-94">Actions</th>
+              <tr className="border-b border-gray-600 text-gray-400 uppercase text-sm">
+                <th className="py-3">Student</th>
+                <th>Group</th>
+                <th>Actions</th>
               </tr>
             </thead>
 
             <tbody>
               {paginated.map((e) => {
-                const student = students.find((s) => s.id === e.studentId);
-                const group = groups.find((g) => g.id === e.groupId);
+                const student = studentMap[e.studentId];
+                const group = groupMap[e.groupId];
 
                 if (editingId === e.id) {
                   return (
@@ -140,14 +155,14 @@ const Envrolment = () => {
                 return (
                   <tr
                     key={e.id}
-                    className="border-b w-300 ml-28 border-gray-700 hover:bg-gray-700/40 transition flex items-center justify-around"
+                    className="border-b border-gray-700 hover:bg-gray-700/40 transition"
                   >
-                    <td className="py-4">{student?.name}</td>
-                    <td>{group?.name}</td>
-                    <td className="flex gap-3">
+                    <td className="py-4">{student?.name || "Not found"}</td>
+                    <td>{group?.nomi || "Not found"}</td>
+                    <td className="flex gap-3 py-2">
                       <button
                         onClick={() => setEditingId(e.id)}
-                        className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-xl transition hover:scale-105"
+                        className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-xl transition"
                       >
                         ✏ Edit
                       </button>
@@ -159,8 +174,6 @@ const Envrolment = () => {
               })}
             </tbody>
           </table>
-
-          
         </div>
       </div>
     </div>

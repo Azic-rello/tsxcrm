@@ -11,6 +11,7 @@ const Login = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (login === "admin" && password === "admin123") {
+
       navigate("/admin");
     } else {
       alert("Login yoki password xato!");

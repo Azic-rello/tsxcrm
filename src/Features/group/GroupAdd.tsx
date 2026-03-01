@@ -18,7 +18,7 @@ const GroupAdd = ({ rooms, onAdd }) => {
       return;
     }
     try {
-      await axios.post("http://localhost:5000/Group", {
+      await axios.post("http://localhost:5000/groups", {
         nomi,
         xona,
         vaqt,

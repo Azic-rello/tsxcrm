@@ -2,7 +2,7 @@ import { useState } from "react";
 
 interface EnvrolmentAddProps {
   students: { id: string; name: string }[];
-  groups: { id: string; name: string }[];
+  groups: { id: string; nomi: string }[];
   onAdd: (data: { studentId: string; groupId: string }) => void;
 }
 
@@ -10,14 +10,11 @@ const EnvrolmentAdd = ({ students, groups, onAdd }: EnvrolmentAddProps) => {
   const [studentId, setStudentId] = useState("");
   const [groupId, setGroupId] = useState("");
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!studentId || !groupId) return;
 
-    onAdd({
-      studentId,
-      groupId,
-    });
+    onAdd({ studentId, groupId });
 
     setStudentId("");
     setGroupId("");
@@ -49,7 +46,7 @@ const EnvrolmentAdd = ({ students, groups, onAdd }: EnvrolmentAddProps) => {
         <option value="">Group tanlang</option>
         {groups.map((g) => (
           <option key={g.id} value={g.id}>
-            {g.name}
+            {g.nomi}
           </option>
         ))}
       </select>

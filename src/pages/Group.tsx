@@ -8,15 +8,17 @@ const Group = () => {
   const [rooms, setRooms] = useState([]);
 
   const fetchGroups = () => {
-    axios.get("http://localhost:5000/Group")
-      .then(res => setGroups(res.data || []))
-      .catch(err => console.error(err));
+    axios
+      .get("http://localhost:5000/groups")
+      .then((res) => setGroups(res.data || []))
+      .catch((err) => console.error(err));
   };
 
   const fetchRooms = () => {
-    axios.get("http://localhost:5000/Room")
-      .then(res => setRooms(res.data || []))
-      .catch(err => console.error(err));
+    axios
+      .get("http://localhost:5000/rooms")
+      .then((res) => setRooms(res.data || []))
+      .catch((err) => console.error(err));
   };
 
   useEffect(() => {
@@ -27,7 +29,7 @@ const Group = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("O'chirmoqchimisiz?")) return;
     try {
-      await axios.delete(`http://localhost:5000/Group/${id}`);
+      await axios.delete(`http://localhost:5000/groups/${id}`);
       fetchGroups();
     } catch (err) {
       console.error(err);

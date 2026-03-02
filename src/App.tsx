@@ -1,0 +1,35 @@
+import { Route, Routes, } from "react-router-dom";
+import {
+  Admin,
+  Group,
+  Login,
+  Manager,
+  Room,
+  Student,
+  Teacher,
+  Assigment,
+  Envrolment
+} from "../";
+import SiteBar from "./components/shared/SiteBar";
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Login />} />
+
+      <Route path="/admin" element={<SiteBar />}>
+        <Route index element={<Admin />} />
+        <Route path="/admin/student" element={<Student />} />
+        <Route path="/admin/teacher" element={<Teacher />} />
+        <Route path="/admin/group" element={<Group />} />
+        <Route path="/admin/room" element={<Room />} />
+        <Route path="/admin/manager" element={<Manager />} />
+        <Route path="/admin/envrolment" element={<Envrolment />} />
+        <Route path="/admin/assigment" element={<Assigment />} />
+      </Route>
+      {/* lhlhk */}
+    </Routes>
+  );
+}
+
+export default App;

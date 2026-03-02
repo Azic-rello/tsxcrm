@@ -7,7 +7,7 @@ const Student = () => {
   const [students, setStudents] = useState<any[]>([])
 
   useEffect(() => {
-    fetch("http://localhost:3000/Student")
+    fetch("http://localhost:5000/Student")
       .then(res => res.json())
       .then(data => setStudents(data))
   }, [])
@@ -17,7 +17,7 @@ const Student = () => {
     const tempStudent = { ...student, id: tempId }
     setStudents(prev => [tempStudent, ...prev])
 
-    const res = await fetch("http://localhost:3000/Student", {
+    const res = await fetch("http://localhost:5000/Student", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(student),
@@ -32,26 +32,26 @@ const Student = () => {
   const handleDelete = async (id: number) => {
     setStudents(prev => prev.filter(s => s.id !== id))
 
-    await fetch(`http://localhost:3000/Student/${id}`, {
+    await fetch(`http://localhost:5000/Student/${id}`, {
       method: "DELETE",
     })
   }
 
   return (
-    <div className="min-h-screen flex justify-center py-10">
-      <div className="w-full max-w-2xl rounded-xl shadow-lg p-6">
-
-        <h2 className="text-2xl font-bold text-white mb-6 text-center">
-          Students
+    <div className="min-h-screen flex justify-center items-start bg-slate-900 py-12">
+      <div className="w-full max-w-3xl rounded-2xl shadow-2xl border border-gray-700 p-8 bg-gradient-to-b from-gray-900 via-slate-900 to-gray-800">
+        
+        <h2 className="text-3xl font-extrabold text-white mb-8 text-center tracking-wide">
+          Students Directory
         </h2>
 
         <div className="mb-8">
           <StudentAdd onAdd={handleAdd} />
         </div>
 
-        <div className="space-y-4">
+        <div className="grid gap-6">
           {students.length === 0 && (
-            <p className="text-center text-gray-400">
+            <p className="text-center text-gray-400 italic">
               Hech narsa yo'q
             </p>
           )}
@@ -61,29 +61,32 @@ const Student = () => {
               key={student.id}
               className="
                 relative
-                border
-                border-gray-300
-                rounded-lg
-                p-4
-                bg-black
+                flex flex-col justify-between
+                border border-gray-700
+                rounded-2xl
+                p-6
+                bg-gradient-to-r from-slate-800 via-gray-900 to-slate-900
+                shadow-lg
+                hover:scale-105 hover:shadow-2xl
+                transition-transform duration-300
                 text-white
-                hover:bg-gray-700
               "
             >
               <div className="flex justify-between items-start">
                 <div>
-                  <Label>
+                  <Label className="text-lg font-semibold text-white">
                     {student.firstName} {student.lastName}
                   </Label>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-gray-400 mt-1">
                     {student.age} yosh · {student.group}
                   </p>
                 </div>
-              </div>
 
-              <StudentDelete
-                onDelete={() => handleDelete(student.id)}
-              />
+                <StudentDelete
+                  onDelete={() => handleDelete(student.id)}
+                  className="ml-4"
+                />
+              </div>
             </div>
           ))}
         </div>

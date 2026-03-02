@@ -15,7 +15,7 @@ const StudentAdd = ({ onAdd }: Props) => {
 
   const submit = () => {
     if (!firstName || !lastName || !age || !group) {
-      alert("Hammasini to‘ldir")
+      
       return
     }
 
@@ -33,7 +33,7 @@ const StudentAdd = ({ onAdd }: Props) => {
   }
 
   return (
-    <div className="bg-gray-700 p-4 rounded-lg border border-gray-700">
+    <div className="bg-slate-800 p-4 rounded-lg border border-gray-700">
       
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -62,7 +62,7 @@ const StudentAdd = ({ onAdd }: Props) => {
 
       <Button
         onClick={submit}
-        className="w-full mt-4 border border-gray-500 hover:bg-gray-700"
+        className="w-full mt-4 border border-gray-500 hover:bg-gray-700 shadow-lg"
       >
         Qo'shish
       </Button>

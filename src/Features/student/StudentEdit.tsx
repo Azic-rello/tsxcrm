@@ -15,7 +15,7 @@ const StudentEdit = ({ student, refresh }: Props) => {
   const [group, setGroup] = useState(student.group)
 
   const save = async () => {
-    await fetch(`http://localhost:3000/students/${student.id}`, {
+    await fetch(`http://localhost:5000/Student${student.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ firstName, lastName, age, group }),

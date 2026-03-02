@@ -79,7 +79,6 @@ const Assignment = () => {
                 />
                 <AssignmentDelete id={a.id} onDelete={fetchData} />
               </td>
-              {/* hyulguykftktyftfft */}
             </tr>
           ))}
         </tbody>

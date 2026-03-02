@@ -16,3 +16,7 @@ export const updateEnvrolment = (
   id: string,
   data: { studentId: string; groupId: string },
 ) => axios.put(`${API}/enrolments/${id}`, data);
+
+export const api = axios.create({
+  baseURL: "http://localhost:5000",
+});

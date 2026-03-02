@@ -1,12 +1,4 @@
-<<<<<<< HEAD
 import { useState } from "react";
-=======
-const AssigmentAdd = () => {
-  return (
-    <div>assigmentAdd</div>
-  )
-}
->>>>>>> ee062c5 (update)
 
 const AssignmentAdd = ({ Teacher, groups, onAdd }) => {
   const [teacherId, setTeacherId] = useState("");

@@ -16,7 +16,11 @@
     }
   ],
   "Student": [],
-  "Manager": [],
+  "Manager": [
+    {
+      
+    }
+  ],
   "Room": [],
   "groups": [
     {

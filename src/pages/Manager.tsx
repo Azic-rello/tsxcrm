@@ -28,44 +28,49 @@ export default function Manager() {
   };
 
   return (
-    <div className="p-6 max-w-5xl mx-auto space-y-6">
-      <h1 className="text-2xl font-bold">Managerlar</h1>
+    <div className="p-6 max-w-6xl mx-auto space-y-8">
+      <h1 className="text-3xl font-bold text-white">Managerlar</h1>
 
       <ManagerAdd onSuccess={getManagers} />
 
-      <table className="w-full border">
-        <thead className="bg-gray-300">
-          <tr>
-            <th className="border p-2 text-black">#</th>
-            <th className="border p-2 text-black">Ism</th>
-            <th className="border p-2 text-black">Email</th>
-            <th className="border p-2 text">Amallar</th>
-          </tr>
-        </thead>
-        <tbody>
-          {managers.map((m, i) => (
-            <tr key={m.id} className="text-center">
-              <td className="border p-2">{i + 1}</td>
-              <td className="border p-2">{m.name}</td>
-              <td className="border p-2">{m.email}</td>
-              <td className="border p-2 space-x-2">
-                <button
-                  onClick={() => setEditManager(m)}
-                  className="bg-green-500 text-white px-3 py-1 rounded"
-                >
-                  Tahrirlash
-                </button>
-                <button
-                  onClick={() => deleteManager(m.id)}
-                  className="bg-red-500 text-white px-3 py-1 rounded"
-                >
-                  O‘chirish
-                </button>
-              </td>
+      <div className="overflow-x-auto shadow-sm rounded-lg">
+        <table className="w-full border-collapse shadow-blue-200">
+          <thead className="bg-gray-800 text-white uppercase text-sm  ">
+            <tr>
+              <th className="border p-3 text-left">#</th>
+              <th className="border p-3 text-left">Ism</th>
+              <th className="border p-3 text-left">Email</th>
+              <th className="border p-3 text-left">Amallar</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {managers.map((m, i) => (
+              <tr
+                key={m.id}
+                className="text-gray-700 hover:bg-gray-50 transition"
+              >
+                <td className="border p-3">{i + 1}</td>
+                <td className="border p-3">{m.name}</td>
+                <td className="border p-3">{m.email}</td>
+                <td className="border p-3 flex gap-2 justify-center">
+                  <button
+                    onClick={() => setEditManager(m)}
+                    className="bg-green-500 text-white px-4 py-1 rounded-lg hover:bg-green-600 transition"
+                  >
+                    Tahrirlash
+                  </button>
+                  <button
+                    onClick={() => deleteManager(m.id)}
+                    className="bg-red-500 text-white px-4 py-1 rounded-lg hover:bg-red-600 transition"
+                  >
+                    O‘chirish
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       <ManagerEdit
         manager={editManager}

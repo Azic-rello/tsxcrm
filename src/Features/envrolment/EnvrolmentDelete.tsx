@@ -15,3 +15,4 @@ const EnvrolmentDelete = ({ id, onDelete }: EnvrolmentDeleteProps) => {
 };
 
 export default EnvrolmentDelete;
+

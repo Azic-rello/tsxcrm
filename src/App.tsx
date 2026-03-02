@@ -1,4 +1,4 @@
-import { Route, Routes, } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import {
   Admin,
   Group,
@@ -8,8 +8,8 @@ import {
   Student,
   Teacher,
   Assigment,
-  Envrolment
-} from "../";
+  Envrolment,
+} from "../index.ts";
 import SiteBar from "./components/shared/SiteBar";
 
 function App() {

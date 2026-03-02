@@ -58,7 +58,6 @@ const Envrolment = () => {
     setCurrentPage(1);
   }, [search]);
 
-  // Maplar performance uchun
   const studentMap = useMemo(
     () => Object.fromEntries(students.map((s) => [s.id, s])),
     [students],

@@ -10,6 +10,7 @@ const AssignmentEdit = ({ assignment, Teacher, groups }) => {
     setLoading(true);
 
     await fetch(`http://localhost:5000/assignments/${assignment.id}`, {
+
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

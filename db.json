@@ -1,49 +1,23 @@
 {
-  "students": [
-    {
-      "id": "1",
-      "name": "Sardor"
-    },
-    {
-      "id": "2",
-      "name": "asdfasdf"
-    },
-    {
-      "id": "3",
-      "name": "qwer"
-    }
-  ],
-  "managers": [],
-  "rooms": [
-    {
-      "name": "dfkasl",
-      "id": "11c0"
-    },
-    {
-      "name": "qwerqw",
-      "id": "317e"
-    },
-    {
-      "name": "zxcv",
-      "id": "d38e"
-    }
-  ],
   "Teacher": [
     {
-      "id": "349d",
-      "firstName": "akhmad",
-      "lastName": "qoshboqov",
-      "phone": "93 444 77 08",
-      "subject": "react"
+      "id": "a06e",
+      "firstName": "ktuyfg",
+      "lastName": "hyugtm",
+      "phone": "jmgfytn",
+      "subject": "jntgyfh"
     },
     {
-      "id": "f743",
-      "firstName": "mahmud",
-      "lastName": "qoshboqov",
-      "phone": "50 509 23 20",
-      "subject": "css"
+      "id": "3d33",
+      "firstName": "rjgfst",
+      "lastName": "jyrhgft",
+      "phone": "jnyrhgf",
+      "subject": "njmmhg"
     }
   ],
+  "Student": [],
+  "Manager": [],
+  "Room": [],
   "groups": [
     {
       "id": "039b",
@@ -51,6 +25,22 @@
       "xona": "zxcv",
       "vaqt": "10:00-12:00",
       "kun": "Toq kunlar"
+    },
+    {
+      "id": "2",
+      "name": "HTML"
+    },
+    {
+      "id": "3",
+      "name": "CSS"
+    },
+    {
+      "id": "4",
+      "name": "JavaScript"
+    },
+    {
+      "id": "5",
+      "name": "Savodxonlik"
     }
   ],
   "assignments": [

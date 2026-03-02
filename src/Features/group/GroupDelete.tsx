@@ -33,3 +33,4 @@ const GroupDel = ({ groups, onEdit, onDelete }) => {
 }
 
 export default GroupDel
+

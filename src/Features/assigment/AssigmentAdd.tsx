@@ -65,6 +65,7 @@ const AssignmentAdd = ({ Teacher, groups, onAdd }) => {
               <option key={g.id} value={g.id}>
                 {g.nomi}
               </option>
+              // dafsoijk
             ))}
           </select>
         </div>

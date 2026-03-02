@@ -3,6 +3,10 @@
 import { useEffect, useState } from "react"
 import StudentAdd from "../Features/student/StudentAdd"
 import StudentDelete from "../Features/student/StudentDelete"
+import { Label } from "@/components/ui/label"
+
+
+
 
 const Student = () => {
   const [students, setStudents] = useState<any[]>([])
@@ -47,12 +51,8 @@ const Student = () => {
           <StudentAdd onAdd={handleAdd} />
         </div>
 
-        {/* LIST */}
         <div className="space-y-4">
           {students.length === 0 && (
-            <p className="text-center text-gray-500">
-              Hali student qo‘shilmagan
-            </p>
           )}
 
           {students.map(student => (
@@ -70,16 +70,17 @@ const Student = () => {
             >
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-lg font-semibold text-gray-800">
+                  <Label>
                     {student.firstName} {student.lastName}
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {student.age} yosh · {student.group}
-                  </p>
+                  </Label>
+                  <Label htmlFor="terms">
+
+                 
+            {student.age} yosh · {student.group}
+                  </Label>
                 </div>
               </div>
 
-              {/* DELETE */}
               <StudentDelete onDelete={() => handleDelete(student.id)} />
             </div>
           ))}

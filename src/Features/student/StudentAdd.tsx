@@ -35,9 +35,7 @@ const StudentAdd = ({ onAdd }: Props) => {
 
   return (
     <div className="bg-gray-700 p-4 rounded-lg border border-gray-700">
-      <h3 className="font-semibold text-white mb-3">
-         Add Student
-      </h3>
+      
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <Input

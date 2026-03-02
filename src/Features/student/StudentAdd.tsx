@@ -1,4 +1,3 @@
-"use client"
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -55,7 +54,7 @@ const StudentAdd = ({ onAdd }: Props) => {
           onChange={e => setAge(e.target.value)}
         />
         <Input
-          placeholder="Guruh (React, Vue...)"
+          placeholder="Guruhingizni yozing!"
           value={group}
           onChange={e => setGroup(e.target.value)}
         />
@@ -63,9 +62,9 @@ const StudentAdd = ({ onAdd }: Props) => {
 
       <Button
         onClick={submit}
-        className="w-full mt-4"
+        className="w-full mt-4 border border-gray-500 hover:bg-gray-700"
       >
-        Add Student
+        Qo'shish
       </Button>
     </div>
   )

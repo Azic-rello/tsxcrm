@@ -1,17 +1,18 @@
 {
   "Teacher": [],
   "Student": [
-    {
-  "students": [ 
-    
-  ]
-}
+    [
+      {
+        "students": [],
+        "id": "e352",
+        "name": "sdf"
+      }
+    ]
   ],
   "Manager": [],
   "Room": [],
   "Group": [],
   "Assignment": [],
-  "Envrolment": []
+  "Envrolment": [],
+  "$schema": "./node_modules/json-server/schema.json"
 }
-
-

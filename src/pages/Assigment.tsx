@@ -79,6 +79,7 @@ const Assignment = () => {
                 />
                 <AssignmentDelete id={a.id} onDelete={fetchData} />
               </td>
+              
             </tr>
           ))}
         </tbody>
